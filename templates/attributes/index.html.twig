@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des attributes{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+    <div id="form-container">
+        <div class="row">
+           <div class="col-md-6">
+                {{ form_row(form.label, { 'id': 'label_0' }) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.type, { 'id': 'type_0' }) }}
+            </div>
+        </div>
+    </div> <br>
+    <button type="button" class="btn btn-secondary" id="add-form"> Ajouter un attribut</button>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    {{ form_end(form) }}
+
+    <script>
+        $(document).ready(function() {
+            let formIndex = 1; 
+            const attributesArray = []; 
+
+            // Ajouter une nouvelle ligne de formulaire
+            $('#add-form').on('click', function() {
+                const $formContainer = $('#form-container');
+                const $newFormRow = $formContainer.children().first().clone();
+
+                $newFormRow.attr('data-index', formIndex);
+                // Parcourir et vider les champs du formulaire cloné
+                $newFormRow.find('input, select, textarea').val('');
+                // Ajouter la nouvelle ligne au conteneur
+                $formContainer.append($newFormRow);
+                formIndex++; 
+            });
+
+            //soumion de forumulaire
+            $('form').on('submit', function(event) {
+                const $hiddenInput = $('#attributes_dataType');
+
+                // Réinitialiser le tableau
+                attributesArray.length = 0;
+
+                // Collecter les valeurs de tous les champs dans chaque ligne du formulaire
+                $('#form-container .row').each(function() {
+                    const label = $(this).find('input[id^="label_"]').val().trim();
+                    const type = $(this).find('select[id^="type_"]').val().trim(); // Assurez-vous que c'est un select
+
+                    if (label && type) {
+                        attributesArray.push({ [label]: type }); // Ajouter au tableau comme objet
+                    }
+                });
+
+                // Mettre à jour la valeur du champ caché avec le tableau JSON stringifié
+                $hiddenInput.val(JSON.stringify(attributesArray));
+
+                // Debug: Afficher dans la console
+                console.log(attributesArray);
+            });
+        });
+
+    </script>
+{% endblock %}

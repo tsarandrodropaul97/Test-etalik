@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h1 class="h4 mb-0">Détail</h1>
+        </div>
+        <div class="card-body">
+            <p><strong>Identifiant :</strong> {{ attributeValue.id }}</p>
+            <p><strong>Libellé :</strong> {{ attributeValue.attributesType ? attributeValue.attributesType.label : 'N/A' }}</p>
+            <p><strong>Valeur :</strong> {{ attributeValue.value}}</p>
+        </div>
+        <div class="card-footer text-end">
+            <a href="{{ path('app_home') }}" class="btn btn-secondary">Retour à la liste</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

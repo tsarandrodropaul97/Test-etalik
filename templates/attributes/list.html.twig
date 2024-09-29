@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des attributs
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h1 class="mb-4">Liste des Attributs</h1>
+		<div class="row">
+			{% for attribute in attributes %}
+				<div class="col-md-3 mb-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex justify-content-between align-items-center">
+								<h5 class="card-title mb-0">{{ attribute.label }}</h5>
+								<h5 class="mb-0 text-success">[{{ attribute.count }}]</h5>
+							</h5>
+						</div>
+
+						<p class="card-text">
+							Type:
+							<strong>{{ attribute.type }}</strong>
+						</p>
+						<div class="d-flex justify-content-between">
+							<a href="{{ path('attribute_add', { 'id': attribute.id }) }}" class="btn btn-outline-primary btn-sm w-100">
+								Ajouter
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>{% endblock %}
