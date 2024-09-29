@@ -21,7 +21,7 @@ class HomeController extends AbstractController
     }
     
     #[Route('/show/{id}', name: 'app_show')]
-    public function show(AttributesValuesRepository $repoValues, AttributesValues $attributeValue): Response
+    public function show(AttributesValues $attributeValue): Response
     {
         return $this->render('home/show.html.twig', [
             'attributeValue' => $attributeValue,

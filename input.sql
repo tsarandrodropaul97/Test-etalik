@@ -10,3 +10,4 @@ INSERT INTO `type` (`id`, `label`) VALUES
 (NULL, 'checkbox'),
 (NULL, 'radio'),
 (NULL, 'hidden')
+(NULL, 'textearea')

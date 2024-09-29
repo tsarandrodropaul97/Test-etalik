@@ -1,24 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion des attributes{% endblock %}
+{% block title %}Gestion des attributes
+{% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}
-    <div id="form-container">
-        <div class="row">
-           <div class="col-md-6">
-                {{ form_row(form.label, { 'id': 'label_0' }) }}
-            </div>
-            <div class="col-md-6">
-                {{ form_row(form.type, { 'id': 'type_0' }) }}
-            </div>
-        </div>
-    </div> <br>
-    <button type="button" class="btn btn-secondary" id="add-form"> Ajouter un attribut</button>
-    <button type="submit" class="btn btn-primary">Enregistrer</button>
-    {{ form_end(form) }}
+	{{ form_start(form) }}
+	<div class="container mt-4">
+		<h1 class="mb-4">Creation du formulaire</h1>
+		<div id="form-container">
+			<div class="row">
+				<div class="col-md-6">
+					{{ form_row(form.label, { 'id': 'label_0' }) }}
+				</div>
+				<div class="col-md-6">
+					{{ form_row(form.type, { 'id': 'type_0' }) }}
+				</div>
+			</div>
+		</div>
+		<br>
+		<button type="button" class="btn btn-secondary" id="add-form">
+			Ajouter un attribut</button>
+		<button type="submit" class="btn btn-primary">Enregistrer</button>
+	</div>
+	{{ form_end(form) }}
 
-    <script>
+  <script>
         $(document).ready(function() {
             let formIndex = 1; 
             const attributesArray = []; 

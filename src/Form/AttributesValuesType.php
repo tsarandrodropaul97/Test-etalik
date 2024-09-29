@@ -81,14 +81,6 @@ class AttributesValuesType extends AbstractType
                 ]);
                 break;
 
-            case 'url':
-                $builder->add('value', UrlType::class, [
-                    'label' => 'Veuillez saisir une URL',
-                    'required' => false,
-                    'attr' => ['class' => 'form-control'],
-                ]);
-                break;
-
             case 'date':
                 $builder->add('value', DateType::class, [
                     'label' => 'Veuillez sélectionner une date',
@@ -100,18 +92,11 @@ class AttributesValuesType extends AbstractType
                 ]);
                 break;
 
-            case 'week':
-                $builder->add('value', WeekType::class, [
-                    'label' => 'Veuillez sélectionner une semaine',
-                    'required' => false,
-                    'attr' => ['class' => 'form-control'],
-                ]);
-                break;
-
             case 'time':
                 $builder->add('value', TimeType::class, [
                     'label' => 'Veuillez sélectionner une heure',
                     'widget' => 'single_text',
+                    'input' => 'string',  
                     'required' => false,
                     'mapped' => false,
                     'attr' => ['class' => 'form-control'],
@@ -158,35 +143,6 @@ class AttributesValuesType extends AbstractType
             case 'hidden':
                 $builder->add('value', HiddenType::class, [
                     'mapped' => false,
-                ]);
-                break;
-
-            case 'image':
-                $builder->add('value', FileType::class, [
-                    'label' => 'Veuillez télécharger une image',
-                    'required' => false,
-                    'attr' => ['accept' => 'image/*', 'class' => 'form-control-file'],
-                ]);
-                break;
-
-            case 'submit':
-                $builder->add('submit', SubmitType::class, [
-                    'label' => 'Envoyer',
-                    'attr' => ['class' => 'btn btn-primary'],
-                ]);
-                break;
-
-            case 'reset':
-                $builder->add('reset', ResetType::class, [
-                    'label' => 'Réinitialiser',
-                    'attr' => ['class' => 'btn btn-secondary'],
-                ]);
-                break;
-
-            case 'button':
-                $builder->add('button', ButtonType::class, [
-                    'label' => 'Cliquez ici',
-                    'attr' => ['class' => 'btn btn-info'],
                 ]);
                 break;
 
