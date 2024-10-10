@@ -48,7 +48,14 @@ Avant de commencer, assurez-vous d'avoir installé :
     Une fois que l'installation de Composer est terminée, assurez-vous d'avoir une connexion Internet pour que le projet fonctionne parfaitement, car il utilise des CDN pour les DataTables.
 
  ## 7- Utilisation
-    Avant de lancer ce projet, assurez-vous de lancer le fichier input.sql dans votre base de données pour le remplir avec des données prédéfinies à propos des types de formulaires.
+ Avant de lancer ce projet,
+ Essayez d'abord de lancer cette commande pour créer votre base de données : 
+    php bin/console d:d:c.
+ Ensuite, effectuez la migration avec la commande 
+    php bin/console make:migration, 
+ puis appliquez la migration à la base de données avec 
+    php bin/console d:m:m
+Enfin, assurez-vous d'exécuter le fichier input.sql dans votre base de données afin de la remplir avec des données prédéfinies concernant les types de formulaires.
 
     Une fois, que ce fait, il suffit juste de lancer ce projet avec "symfony serve" ou "php -S localhos:8000 -t public" 
 
